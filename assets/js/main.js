@@ -96,22 +96,42 @@
 	// Main Sections: Two.
 
 		// Lightbox gallery.
-			$window.on('load', function() {
+			// $window.on('load', function() {
 
-				$('#two').poptrox({
-					caption: function($a) { return $a.next('h3').text(); },
-					overlayColor: '#2c2c2c',
-					overlayOpacity: 0.85,
-					popupCloserText: '',
-					popupLoaderText: '',
-					selector: '.work-item a.image',
-					usePopupCaption: true,
-					usePopupDefaultStyling: false,
-					usePopupEasyClose: false,
-					usePopupNav: true,
-					windowMargin: (breakpoints.active('<=small') ? 0 : 50)
-				});
+			// 	$('#two').poptrox({
+			// 		caption: function($a) { return $a.next('h3').text(); },
+			// 		overlayColor: '#2c2c2c',
+			// 		overlayOpacity: 0.85,
+			// 		popupCloserText: '',
+			// 		popupLoaderText: '',
+			// 		selector: '.work-item a.image',
+			// 		usePopupCaption: true,
+			// 		usePopupDefaultStyling: false,
+			// 		usePopupEasyClose: false,
+			// 		usePopupNav: true,
+			// 		windowMargin: (breakpoints.active('<=small') ? 0 : 50)
+			// 	});
 
+			// });
+
+			$('.work-item a').on('click', function() {
+				console.log('click5');
+				var $a = $(this),
+					href = $a.attr('href'),
+					target = $a.attr('target');
+
+				if (!href || href == '#' || href == '')
+					return;
+
+				// Redirect to href.
+					window.setTimeout(function() {
+						console.log('click6');
+						if (target == '_blank')
+							window.open(href);
+						else
+							window.location.href = href;
+
+					}, 10);
 			});
 
 })(jQuery);
